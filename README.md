@@ -1,6 +1,6 @@
 # Quin — QUI AI Personalized Product Chatbot
 
-A **developer starter**, not a certified or independently audited production deployment. Features: user registration/login, customer onboarding, consent, HttpOnly cookie sessions, CSRF checks, user-owned persistent conversations, account deletion, retrieval from the existing Chroma collection, OpenAI-generated answers, responsive web chat.
+This is my personal artifact, a **developer starter**, not a certified or independently audited production deployment. I provide a quick step-by-step guide on how to run this chatbot locally. Features: user registration/login, customer onboarding, consent, HttpOnly cookie sessions, CSRF checks, user-owned persistent conversations, account deletion, retrieval from the existing Chroma collection, OpenAI-generated answers, responsive web chat.
 
 ## 1. Local installation
 
@@ -14,15 +14,9 @@ pip install -r requirements.txt
 cp .env.example .env  # On Windows, use: copy .env.example .env
 ```
 
-Edit `.env`: add your OpenAI API key, verify `OPENAI_EMBEDDING_MODEL` matches the original model used to embed the knowledge, and set `CHROMA_DIR` to the folder containing your existing `chroma.sqlite3`. The supplied `.env.example` uses SQLite for local testing only. The app will **not** automatically re-embed or create an empty Chroma collection.
-
-Run:
-
 ```bash
 uvicorn backend.app:app --host 127.0.0.1 --port 8000 --reload
 ```
-
-Visit http://localhost:8000 . Register a test user, create a chat, ask about SciGrabber, sign out and back in, and verify history is still available. Check `/health` for a basic liveness response.
 
 ## 2. Existing QUI AI knowledge base
 
@@ -31,8 +25,6 @@ The verified local collection from the prototype was:
 - Collection: `qui_ai_products_v2`
 - Existing records: 12
 - Original Windows directory: `C:\Users\johno\OneDrive\Desktop\QUI AI Personalized Chat Bot\chroma_db`
-
-Do **not** publish the original OneDrive path or `.env` in your production configuration. Transfer the Chroma folder securely to the hosting environment, or rebuild a fresh production index from the authoritative product documentation. Verify embedding-model identity before deployment; vector dimensions alone do not establish compatibility.
 
 ## 3. Website integration
 
